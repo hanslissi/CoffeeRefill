@@ -8,8 +8,8 @@ public class CoffeeRefill {
 
     public CoffeeRefill() {
         this.working = false;
-        this.coffee = new Coffee();
         this.coffeePot = new CoffeePot();
+        this.coffee = new Coffee(coffeePot);
         this.work = new Work();
     }
 

@@ -2,27 +2,38 @@ public class Coffee {
     private int coffeeAmount;
     private static int MAX_COFFEE_AMOUNT = 100;
 
-    public Coffee() {
+    private CoffeePot pot;
+
+    public Coffee(CoffeePot pot) {
         this.coffeeAmount = MAX_COFFEE_AMOUNT;
+        this.pot = pot;
     }
 
     public void displayCoffee() {
-        String steam = "  "
-                + "         (\n"
-                + "          )\n"
-                + "      ( (\n"
-                + "       ) )\n"
-                + "    ( ( (\n"
-                + "      ) )\n"
-                + "       (\n"
-                + "_        )     _";
+        System.out.print("                       ");
+        pot.displayCoffeePot(0);
+        System.out.print("\n         (             ");
+        pot.displayCoffeePot(1);
+        System.out.print("\n          )            ");
+        pot.displayCoffeePot(2);
+        System.out.print("\n      ( (              ");
+        pot.displayCoffeePot(3);
+        System.out.print("\n       ) )             ");
+        pot.displayCoffeePot(4);
+        System.out.print("\n    ( ( (              ");
+        pot.displayCoffeePot(5);
+        System.out.print("\n      ) )              ");
+        pot.displayCoffeePot(6);
+        System.out.print("\n       (               ");
+        pot.displayCoffeePot(7);
+        System.out.print("\n_        )     _       ");
+        pot.displayCoffeePot(8);
 
-        String emptyLine = "│              │";
-        String fullLine = "│~~~~~~~~~~~~~~│";
-        String bottomLine = "└──────────────┘";
+        String emptyLine = "\n│              │";
+        String fullLine = "\n│~~~~~~~~~~~~~~│";
+        String bottomLine = "\n└──────────────┘       ";
         int lines = 10;
         int emptyLines = (int) (((double) (MAX_COFFEE_AMOUNT - coffeeAmount) / MAX_COFFEE_AMOUNT) * lines);
-        System.out.println(steam);
         for (int i = 0; i < lines; i++) {
             if (i < emptyLines) {
                 System.out.print(emptyLine);
@@ -31,28 +42,32 @@ public class Coffee {
             }
             switch (i) {
                 case 2:
-                    System.out.print("==\\\\");
+                    System.out.print("==\\\\   ");
                     break;
                 case 3:
-                    System.out.print("   \\\\");
+                    System.out.print("   \\\\  ");
                     break;
                 case 4:
-                    System.out.print("   ││");
+                    System.out.print("   ││  ");
                     break;
                 case 5:
-                    System.out.print("   ││");
+                    System.out.print("   ││  ");
                     break;
                 case 6:
-                    System.out.print("   //");
+                    System.out.print("   //  ");
                     break;
                 case 7:
-                    System.out.print("==//");
+                    System.out.print("==//   ");
+                    break;
+                default:
+                    System.out.print("       ");
                     break;
             }
-            System.out.println();
-
+            pot.displayCoffeePot(i + 9);
         }
-        System.out.println(bottomLine + "\n\n");
+        System.out.print(bottomLine);
+        pot.displayCoffeePot(19);
+        System.out.println("\n\n");
     }
 
     public void drink() {
